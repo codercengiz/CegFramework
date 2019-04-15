@@ -4,17 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CegFramework.Core.DataAccess;
-using CegFramework.Northwind.Entities.ComplexTypes;
 using CegFramework.Northwind.Entities.Concrete;
 
 namespace CegFramework.Northwind.DataAccess.Abstract
 {
-    public interface IProductDal:IEntityRepository<Product>
+    public interface ICategoryDal:IEntityRepository<Category>
     {
-        //sometimes we have to write code for only product
-        //such as: GetComplexProducts
-
-        List<ProductDetail> GetProductDetails();
-
     }
 }

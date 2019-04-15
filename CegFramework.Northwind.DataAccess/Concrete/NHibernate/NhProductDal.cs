@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using CegFramework.Core.DataAccess.EntityFramework;
+using CegFramework.Core.DataAccess.NHibernate;
 using CegFramework.Northwind.DataAccess.Abstract;
 using CegFramework.Northwind.Entities.ComplexTypes;
 using CegFramework.Northwind.Entities.Concrete;
+using NHibernate.Linq;
 
-namespace CegFramework.Northwind.DataAccess.Concrete.EntityFramework
+namespace CegFramework.Northwind.DataAccess.Concrete.NHibernate
 {
-    public class EfProductDal :EfEntityRepositoryBase<Product,NorthwindContext>, IProductDal
+    public class NhProductDal:NhEntityRepositoryBase<Product>, IProductDal
     {
+        private NHibernateHelper _nHibernateHelper;
+        public NhProductDal(NHibernateHelper nHibernateHelper) : base(nHibernateHelper)
+        {
+            _nHibernateHelper = nHibernateHelper;
+        }
+
         public List<ProductDetail> GetProductDetails()
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (var session=_nHibernateHelper.OpenSession())
             {
-                var result = from p in context.Products
-                    join c in context.Categories on p.CategoryId equals c.CategoryId
+                var result = from p in session.Query<Product>()
+                    join c in session.Query<Category>() on p.CategoryId equals c.CategoryId
                     select new ProductDetail
                     {
                         ProductName = p.ProductName,
@@ -31,12 +37,8 @@ namespace CegFramework.Northwind.DataAccess.Concrete.EntityFramework
                         UnitsOnOrder = p.UnitsOnOrder,
                         UnitsInStock = p.UnitsInStock,
                         SupplierId = p.SupplierId
-
-
                     };
                 return result.ToList();
-
-
             }
         }
     }

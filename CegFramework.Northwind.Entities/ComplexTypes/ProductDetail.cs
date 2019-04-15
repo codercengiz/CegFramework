@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CegFramework.Core.Entities;
 
-namespace CegFramework.Northwind.Entities.Concrete
+namespace CegFramework.Northwind.Entities.ComplexTypes
 {
-    public class Product:IEntity
+    public class ProductDetail
     {
         public virtual int ProductId { get; set; }
         public virtual string ProductName { get; set; }
@@ -19,6 +18,7 @@ namespace CegFramework.Northwind.Entities.Concrete
         public virtual Int16 UnitsOnOrder { get; set; }
         public virtual Int16 ReorderLevel { get; set; }
         public virtual bool Discontinued { get; set; }
+        public virtual string CategoryName { get; set; }
 
     }
 }

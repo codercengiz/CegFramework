@@ -17,6 +17,7 @@ namespace CegFramework.Northwind.DataAccess.Concrete.EntityFramework
             //I am using northwind db; this is ready
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

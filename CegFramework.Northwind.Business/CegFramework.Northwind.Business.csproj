@@ -41,7 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IProductService.cs" />
+    <Compile Include="Concrete\Managers\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CegFramework.Core\CegFramework.Core.csproj">
+      <Project>{757276fa-5d41-4af2-b90e-71c8e67e1a47}</Project>
+      <Name>CegFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CegFramework.Northwind.DataAccess\CegFramework.Northwind.DataAccess.csproj">
+      <Project>{95933864-81B1-40AA-B4BC-ACE2CBDFD4DA}</Project>
+      <Name>CegFramework.Northwind.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CegFramework.Northwind.Entities\CegFramework.Northwind.Entities.csproj">
+      <Project>{E5D4E2DB-39BA-4C79-89A4-A0BB112D1B25}</Project>
+      <Name>CegFramework.Northwind.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
