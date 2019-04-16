@@ -14,6 +14,8 @@ namespace CegFramework.Northwind.Business.Abstract
         Product GetProductById(int id);
 
         Product AddProduct(Product product);
+        Product UpdateProduct(Product product);
+        void TransactionalOperation(Product product1, Product product2);
 
     }
 }
