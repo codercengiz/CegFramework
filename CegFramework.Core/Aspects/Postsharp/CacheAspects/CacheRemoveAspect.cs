@@ -35,7 +35,7 @@ namespace CegFramework.Core.Aspects.Postsharp.CacheAspects
         public override void OnSuccess(MethodExecutionArgs args)
         {
            _cacheManager.RemovePattern(string.IsNullOrEmpty(_pattern)
-           ? string.Format("{0}.{1}.*",args.Method.ReflectedType.ReflectedType.Namespace,args.Method.ReflectedType.Name)
+           ? string.Format("{0}.{1}.*",args.Method.ReflectedType.Namespace,args.Method.ReflectedType.Name)
            : _pattern
            );
         }

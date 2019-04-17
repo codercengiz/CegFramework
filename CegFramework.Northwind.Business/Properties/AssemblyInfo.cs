@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using CegFramework.Core.Aspects.Postsharp.ExceptionAspects;
+using CegFramework.Core.Aspects.Postsharp.LogAspects;
+using CegFramework.Core.Aspects.Postsharp.PerformanceAspects;
+using CegFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -13,6 +17,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: LogAspect(typeof(DatabaseLogger),AttributeTargetTypes = "CegFramework.Northwind.Business.Concrete.Managers.*")] //we are logging all managers class
+[assembly: ExceptionLogAspect(typeof(DatabaseLogger),AttributeTargetTypes = "CegFramework.Northwind.Business.Concrete.Managers.*")] //we are logging all managers class
+[assembly: PerformanceCounterAspect(AttributeTargetTypes = "CegFramework.Northwind.Business.Concrete.Managers.*")] //we are logging all managers class
+
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

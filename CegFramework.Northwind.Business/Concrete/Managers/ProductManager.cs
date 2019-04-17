@@ -3,11 +3,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 using CegFramework.Core.Aspects.Postsharp;
 using CegFramework.Core.Aspects.Postsharp.CacheAspects;
+using CegFramework.Core.Aspects.Postsharp.ExceptionAspects;
 using CegFramework.Core.Aspects.Postsharp.LogAspects;
+using CegFramework.Core.Aspects.Postsharp.PerformanceAspects;
 using CegFramework.Core.Aspects.Postsharp.TransactionAspects;
 using CegFramework.Core.Aspects.Postsharp.ValidationAspects;
 using CegFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
@@ -21,6 +24,7 @@ using FluentValidation.Resources;
 
 namespace CegFramework.Northwind.Business.Concrete.Managers
 {
+    [LogAspect(typeof(DatabaseLogger))]
     public class ProductManager:IProductService
     {
         private IProductDal _productDal;
@@ -31,10 +35,11 @@ namespace CegFramework.Northwind.Business.Concrete.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager) )]
-        [LogAspect(typeof(DatabaseLogger))]
-        [LogAspect(typeof(FileLogger))]
+       
         public List<Product> GetAllProducts()
         {
+            
+
             return _productDal.GetList();
         }
 
@@ -46,6 +51,8 @@ namespace CegFramework.Northwind.Business.Concrete.Managers
 
         [FluentValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
+       
+       // [LogAspect(typeof(FileLogger))]
         public Product AddProduct(Product product)
         {
            // ValidatorTool.FluentValidate(new ProductValidator(), product);
@@ -58,7 +65,9 @@ namespace CegFramework.Northwind.Business.Concrete.Managers
             return _productDal.Update(product);
         }
 
+        [FluentValidationAspect(typeof(ProductValidator))]
         [TransactionScopeAspect]
+       
         public void TransactionalOperation(Product product1, Product product2)
         {
             _productDal.Add(product1);
