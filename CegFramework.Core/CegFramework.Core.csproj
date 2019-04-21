@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -67,7 +70,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -95,6 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspects\Postsharp\AuthorizationAspects\SecuredOperation.cs" />
     <Compile Include="Aspects\Postsharp\CacheAspects\CacheAspect.cs" />
     <Compile Include="Aspects\Postsharp\CacheAspects\CacheRemoveAspect.cs" />
     <Compile Include="Aspects\Postsharp\ExceptionAspects\ExceptionLogAspect.cs" />
@@ -111,6 +119,9 @@
     <Compile Include="CrossCuttingConcerns\Logging\Log4Net\SerilizableLogEvent.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\LogDetail.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\LogParameter.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Identity.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\AuthenticationHelper.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\SecurityUtilities.cs" />
     <Compile Include="CrossCuttingConcerns\Validation\FluentValidation\ValidatorTool.cs" />
     <Compile Include="DataAccess\EntityFramework\EfEntityRepositoryBase.cs" />
     <Compile Include="DataAccess\EntityFramework\EfQueryableRepositoryBase.cs" />
@@ -121,6 +132,7 @@
     <Compile Include="DataAccess\NHibernate\NhQueryableRepositoryBase.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Mappings\AutoMapperHelper.cs" />
     <Compile Include="Utilities\Mvc\Infrastructure\NinjectControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup />

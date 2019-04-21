@@ -11,6 +11,7 @@ using CegFramework.Northwind.Business.Abstract;
 using CegFramework.Northwind.Business.Concrete.Managers;
 using CegFramework.Northwind.DataAccess.Abstract;
 using CegFramework.Northwind.DataAccess.Concrete.EntityFramework;
+using CegFramework.Northwind.DataAccess.Concrete.NHibernate;
 using CegFramework.Northwind.DataAccess.Concrete.NHibernate.Helpers;
 using CegFramework.Northwind.Entities.Concrete;
 using Ninject.Modules;
@@ -30,7 +31,10 @@ namespace CegFramework.Northwind.Business.DependencyResolvers.Ninject
 
 
             Bind<IProductService>().To<ProductManager>().InSingletonScope();
-            Bind<IProductDal>().To<EfProductDal>();
+            Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
+
+            Bind<IUserService>().To<UserManager>().InSingletonScope();
+            Bind<IUserDal>().To<EfUserDal>().InSingletonScope();
         }
     }
 }
