@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
+    <Content Include="Scripts\systemjs.config.js" />
     <Content Include="tsScripts\src\app\app.component.css" />
     <Content Include="tsScripts\src\app\app.component.html" />
     <Content Include="tsScripts\src\favicon.ico" />
@@ -101,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -114,6 +117,8 @@
     <Content Include="tsScripts\src\tsconfig.app.json" />
     <Content Include="tsScripts\src\tsconfig.spec.json" />
     <Content Include="tsScripts\src\tslint.json" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -123,9 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="tsScripts\src\app\app.component.spec.ts" />
