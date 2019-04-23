@@ -41,7 +41,7 @@ namespace CegFramework.Northwind.Business.Concrete.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager) )]
-        [SecuredOperation(Roles="Admin" )]
+        //[SecuredOperation(Roles="Admin" )]
         public List<Product> GetAllProducts()
         {
             //return _productDal.GetList();
